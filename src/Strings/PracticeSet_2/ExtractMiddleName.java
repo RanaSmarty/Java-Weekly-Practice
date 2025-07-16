@@ -1,4 +1,7 @@
 package Strings.PracticeSet_2;
+
+import java.util.Scanner;
+
 /**
  * Practice Problem 5: Extract Middle Name (Optional Challenge)
  *
@@ -26,17 +29,50 @@ public class ExtractMiddleName {
     Import Scanner package
 
         Display a welcome message to the user
-        Make a Scanner object to ask users questions
-        Prompt the user to type their first, middle, and last name — all separated by spaces
-        Read the user entered full name and save it in a variable
+        Create a Scanner object to ask the user
+        Prompt the user to enter their full name (first, middle, last name — separated by spaces)
+        Read the full name and store it in a variable
 
-        Find the index of the first space character (' ') before middle name
+        Find the index of the first space using indexOf(' ')
+        IF first space is -1 THEN
+            Print "Middle name not found!"
+            END
 
-        IF the index is more than -1 THEN
-            Extract the first name using substring
-            Find the index of the second space character from first name (' ') before last name
+        ELSE IF
+            Find the index of the second space using indexOf(' ', firstSpaceIndex + 1)
+            IF second space not found (i.e., index is -1) THEN
+                Print "Middle name not found!"
+                END
+
+            ELSE IF
+                Extract middle name using substring from (firstSpaceIndex + 1) to (secondSpaceIndex)
+                Print the middle name
         END IF
-        Close the Scanner object to avoid resources leaks
+
+        Close the Scanner object to avoid resource leaks
     END
      */
+    public static void main(String[] args) {
+        System.out.println("Welcome to Middle Name Extractor!\n");
+        Scanner userInput = new Scanner(System.in);
+        System.out.print("Kindly, type your full name: ");
+        String full_Name = userInput.nextLine();
+
+        int firstSpaceIndex = full_Name.indexOf(' ');
+        if (firstSpaceIndex == -1) {
+            System.out.println();
+            System.out.println("Middle name not found..!");
+        } else {
+            int secondSpaceIndex = full_Name.indexOf(' ', firstSpaceIndex + 1);
+            if (secondSpaceIndex == -1) {
+                System.out.println("\nMiddle name not found..!");
+            } else {
+                String middleName = full_Name.substring(firstSpaceIndex + 1, secondSpaceIndex);
+                System.out.println();
+                System.out.println("Middle name is " + middleName);
+            }
+        }
+        System.out.println();
+        userInput.close();
+    }
 }
