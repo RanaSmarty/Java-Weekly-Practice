@@ -58,4 +58,3 @@ public class VowelCounter {
         userInput.close();
     }
 }
-
