@@ -22,6 +22,12 @@ public class ReverseString {
     Prompt the user to input a statement
     Read the user inputted statement and store it in a variable
 
+    Check empty input...
+    IF statement is null or empty THEN
+    Print invalid message
+    Return
+    END IF
+
     Create a StringBuilder with the original string
     Use reverse method
     Convert back to String
@@ -34,6 +40,11 @@ public class ReverseString {
         Scanner userInput = new Scanner(System.in);
         System.out.println("Write a statement...");
         String originalStatement = userInput.nextLine();
+
+        if (originalStatement == null || originalStatement.isEmpty()) {
+            System.out.println("\nNo input provided!");
+            return;
+        }
 
         StringBuilder sbStatement = new StringBuilder(originalStatement);
         sbStatement.reverse();
